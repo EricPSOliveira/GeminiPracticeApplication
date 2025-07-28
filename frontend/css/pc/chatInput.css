@@ -1,0 +1,67 @@
+.chat_input{
+  background-color: transparent;
+  width: 100%;
+  height: 20%;
+  border-bottom-left-radius: 50px;
+  border-bottom-right-radius: 50px;
+  padding: 4rem;
+  display: flex;
+  justify-content: space-between;
+  border-radius: 50px;
+
+}
+.chatinsideContent{
+  width: 100%;
+  height: 200%;
+  display: flex;
+  justify-content: space-between;
+  border: 1px solid var(--border-color);
+  border-radius: 50px;
+  align-items: center;
+}
+.chat_insert_content{
+  background-color: transparent;
+  width: 100%;
+  height: 100%;
+  border-top-left-radius: 50px;
+  border-bottom-left-radius: 50px;
+  padding: 0;
+  display: flex;
+  justify-content: start;
+  align-items: center;
+  color: var(--text-color);
+  border: 1px solid var(--border-color);
+  border-right  : none;
+}
+
+.chatInsert{
+  background-color: transparent;
+  
+  padding: 2rem;
+  width: 100%;
+  height: 100%;
+  color: var(--text-color);
+}
+.chatInsert ~ label{
+    padding: 2rem;
+  position: absolute;
+  pointer-events: none;
+  color: var(--label-color);
+}
+.chatInsert:focus ~ label, .chatInsert.verified ~ label{
+  transform: translate(-5%,-20%) scale(0.8);
+  transition: 0.2s ease-in-out;
+}
+.chatinsideContent:has(.chatInsert:focus), .chatinsideContent:has(.chatInsert:focus) ~ .chatSend{
+  animation: bigBorder 0.3s ease-in-out forwards;
+}
+
+@keyframes bigBorder {
+  from{
+    box-shadow: 1px 1px 1px var(--shadow-color-one);
+
+  } to{
+    box-shadow: 1px 1px 10px var(--shadow-color-one);
+  }
+  
+}

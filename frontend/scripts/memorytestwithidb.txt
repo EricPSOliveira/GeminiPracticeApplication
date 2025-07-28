@@ -1,0 +1,155 @@
+let novaMente;
+let db;
+let neuronio = -1
+let neuroniotwo = -1
+
+class StartMind {
+  #db = null;
+  #dbName = "memory";
+  #dbVersion = 3;
+  #objectSN = "memories"
+
+  constructor() {
+    console.log("memoriaIniciada")
+  }
+
+  async startMindBee() {
+
+    if(this.#db){
+      return this.#db
+    }
+    return new Promise((resolve, reject) => {
+      const startMemory = indexedDB.open(this.#dbName, this.#dbVersion);
+
+      startMemory.onsuccess = (e) =>{
+        console.log(e)
+        this.#db = e.target.result
+        this.#db.onversionchange = () => {
+          this.#db.close();
+          console.warn("warning: version change")
+      
+        }
+
+        resolve(this.#db)
+      }
+      startMemory.onerror = (e) =>{
+        console.error(e)
+        reject(e)
+      }
+      startMemory.onupgradeneeded = (e) =>{
+        console.log(e)
+
+        if(!this.#db.objectStoreNames.contains(this.#objectSN)){
+          this.#db.createObjectStore(this.#objectSN, {keyPath: "name"})
+        }
+        resolve(this.#db)
+
+      }
+      startMemory.onblocked = (e) =>{
+        console.warn(e)
+        reject(e)
+      }
+
+
+
+
+
+
+    })
+
+  }
+
+  closeDB() {
+    this.db.close();
+    console.log("fechado")
+  }
+  async delDB(){
+    const deleteRequest = indexedDB.deleteDatabase("memory");
+
+    deleteRequest.onsuccess = () => {
+      console.log("Database 'memory' deleted successfully.");
+    };
+
+    deleteRequest.onerror = (event) => {
+      console.error("Erro ao tentar deletar o banco de dados 'memory'.");
+      console.error("Evento de erro:", event);
+    };
+
+    deleteRequest.onblocked = (event) => {
+      console.warn("A exclusão do banco de dados 'memory' foi bloqueada.");
+      console.warn("Certifique-se de que todas as conexões ao banco de dados estejam fechadas em outras guias/janelas.");
+      console.warn("Evento de bloqueio:", event);
+    };
+    console.log("fechado")
+  }
+
+  async memoryInsert(content) {
+    neuronio += 1
+
+    let atualMemory = {
+      name: `atualMemory ${neuronio++}`,
+      value: content
+  
+    }
+  
+    // console.log(atualMemory, content, db)
+    let axonio = db.transaction(["memories"], "readwrite")
+    let sinapse = axonio.objectStore("memories")
+    let dendrito = sinapse.add(atualMemory)
+  
+    dendrito.onsuccess = () => {
+      console.log("conhecimento reconhecido")
+    }
+    dendrito.onerror = () => {
+      console.log("conhecimento reconhecido")
+    }
+  }
+  memoryGet(){
+    neuroniotwo += 1
+    return new Promise((resolve, reject) => {
+      let result = db.transaction(["memories"], "readonly").objectStore("memories").get(`atualMemory ${neuroniotwo++}`);
+  
+      result.onsuccess = (event) => {
+        if (event.target.result) {
+          let hasMemory = event.target.result;
+          console.log("Dados encontrados:", hasMemory);
+          resolve({ memory: hasMemory, isMemory: true });
+        } else {
+          console.log("Dados não encontrados");
+          resolve({ memory: null, isMemory: false });
+        }
+      };
+  
+      result.onerror = (event) => {
+        console.error("Erro ao consultar dados:", event);
+        reject(event.target.error);
+      };
+    });
+  }
+
+}
+
+document.addEventListener("DOMContentLoaded", async function () {
+  novaMente = new StartMind()
+
+  try{
+    await novaMente.startMindBee()
+  } catch (error){
+    console.log(error)
+  }
+  
+})
+
+document.addEventListener("beforeunload", function () {
+  if(novaMente){
+    novaMente.closeDB();
+  } else{
+    console.warn("warning if u wanna live without memory")
+  }
+})
+
+
+
+
+
+

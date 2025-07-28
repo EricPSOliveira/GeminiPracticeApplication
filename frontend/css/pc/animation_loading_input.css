@@ -1,0 +1,198 @@
+.loading {
+  display: none;
+  background-color: transparent;
+  position: absolute;
+  width: 100%;
+  left: 0;
+  height: 1rem;
+  border-radius: 50px;
+  justify-content: center;
+  align-items: center;
+  font-size: 2rem;
+  border-left: none;
+  pointer-events: none;
+}
+
+.loading.Lloading {
+  animation: Lloading 0.3s ease-in-out;
+  opacity: 1;
+  display: flex;
+}
+@keyframes Lloading {
+  from {
+    opacity: 0;
+  }
+}
+.loading.dontLoading {
+  animation: dontLoading 0.5s ease-in-out;
+  opacity: 0;
+  display: flex;
+}
+@keyframes dontLoading {
+  from {
+    opacity: 1;
+  }
+}
+
+.border {
+  border-radius: 50%;
+  background: linear-gradient(
+        139deg,
+        rgba(255, 255, 255, 1) 0%,
+        rgba(188, 152, 245, 1) 46%,
+        rgba(69, 28, 235, 1) 97%
+      )
+      border-box,
+    white padding-box;
+  border: 1px solid transparent;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 2rem;
+  height: 2rem;
+}
+@keyframes linearGradient {
+  0% {
+    background: linear-gradient(
+          0deg,
+          rgba(255, 255, 255, 1) 0%,
+          rgba(188, 152, 245, 1) 46%,
+          rgba(69, 28, 235, 1) 97%
+        )
+        border-box,
+      white padding-box;
+  }
+  10% {
+    background: linear-gradient(
+          36deg,
+          rgba(255, 255, 255, 1) 0%,
+          rgba(188, 152, 245, 1) 46%,
+          rgba(69, 28, 235, 1) 97%
+        )
+        border-box,
+      white padding-box;
+  }
+  20% {
+    background: linear-gradient(
+          72deg,
+          rgba(255, 255, 255, 1) 0%,
+          rgba(188, 152, 245, 1) 46%,
+          rgba(69, 28, 235, 1) 97%
+        )
+        border-box,
+      white padding-box;
+  }
+  30% {
+    background: linear-gradient(
+          108deg,
+          rgba(255, 255, 255, 1) 0%,
+          rgba(188, 152, 245, 1) 46%,
+          rgba(69, 28, 235, 1) 97%
+        )
+        border-box,
+      white padding-box;
+  }
+  40% {
+    background: linear-gradient(
+          144deg,
+          rgba(255, 255, 255, 1) 0%,
+          rgba(188, 152, 245, 1) 46%,
+          rgba(69, 28, 235, 1) 97%
+        )
+        border-box,
+      white padding-box;
+  }
+  50% {
+    background: linear-gradient(
+          180deg,
+          rgba(255, 255, 255, 1) 0%,
+          rgba(188, 152, 245, 1) 46%,
+          rgba(69, 28, 235, 1) 97%
+        )
+        border-box,
+      white padding-box;
+  }
+  60% {
+    background: linear-gradient(
+          216deg,
+          rgba(255, 255, 255, 1) 0%,
+          rgba(188, 152, 245, 1) 46%,
+          rgba(69, 28, 235, 1) 97%
+        )
+        border-box,
+      white padding-box;
+  }
+  70% {
+    background: linear-gradient(
+          252deg,
+          rgba(255, 255, 255, 1) 0%,
+          rgba(188, 152, 245, 1) 46%,
+          rgba(69, 28, 235, 1) 97%
+        )
+        border-box,
+      white padding-box;
+  }
+  80% {
+    background: linear-gradient(
+          288deg,
+          rgba(255, 255, 255, 1) 0%,
+          rgba(188, 152, 245, 1) 46%,
+          rgba(69, 28, 235, 1) 97%
+        )
+        border-box,
+      white padding-box;
+  }
+  90% {
+    background: linear-gradient(
+          324deg,
+          rgba(255, 255, 255, 1) 0%,
+          rgba(188, 152, 245, 1) 46%,
+          rgba(69, 28, 235, 1) 97%
+        )
+        border-box,
+      white padding-box;
+  }
+  100% {
+    background: linear-gradient(
+          360deg,
+          rgba(255, 255, 255, 1) 0%,
+          rgba(188, 152, 245, 1) 46%,
+          rgba(69, 28, 235, 1) 97%
+        )
+        border-box,
+      white padding-box;
+  }
+}
+
+@keyframes border {
+  to {
+    width: 2.7rem;
+    height: 2.7rem;
+  }
+}
+
+.border i {
+  background-color: var(--ilusion);
+  border-radius: 50%;
+  font-size: 2.1rem;
+}
+#circle {
+  transform-origin: center;
+  transform: scale(1.2);
+  transition: 0.3s ease-in-out;
+  color: transparent;
+  cursor: pointer;
+  background-color: transparent;
+}
+#circle {
+  transform-origin: center;
+  transform: scale(1);
+  transition: 0.3s ease-in-out;
+  color: var(--text-color);
+  cursor: pointer;
+}
+.border {
+  animation: border 1s ease-in-out forwards,
+    linearGradient 0.3s ease-in-out infinite;
+  box-shadow: 2px 2px 30px var(--shadow-color-one);
+}

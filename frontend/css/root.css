@@ -1,0 +1,16 @@
+:root{
+  --main-color: #007bff;
+  --secondary-color: #ffffff3b;
+  --text-color: black;
+  --label-color: rgba(0, 0, 0, 0.473);
+  --border-color: rgba(0, 0, 0, 0.055);
+  --ilusion: #c8dafa;
+  --shadow-color-one: rgba(69, 28, 235, 1);
+
+
+
+  --api-titles: #333333;
+  --api-one: #0D47A1;
+  --api-two: #455A64;
+
+}
